@@ -1,65 +1,31 @@
 <template>
-  <div id="cdrs">
-    <CdrFilter v-on:applyFilter="getCdrs" />
-    <div class="cdrTable contentTable">
-      <b-spinner
-        v-if="loading"
-        variant="primary"
-        label="Spinning"
-      />
-      <b-table
-        v-if="!loading"
-        :small="small"
-        :items="cdrs"
-        :per-page="perPage"
-        :striped="striped"
-        :fixed="fixed"
-        :fields="fields"
-        hover
-      >
-        <template
-          slot="success"
-          slot-scope="row"
-        >
-          <b-badge
-            v-bind:variant="row.item.success ? 'success' : 'danger'"
-            pill
-          >
-            {{ row.item.success }}
-          </b-badge>
-        </template>
-      </b-table>
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="rows"
-        :per-page="perPage"
-        v-on:change="getCdrs"
-        :disabled="loading"
-        size="sm"
-        aria-controls="cdrsTable"
-      />
-      <p class="mt-3">
-        Total: {{ rows }}
-      </p>
-    </div>
-  </div>
+  <DataTable
+    :fields="fields"
+    :items="cdrs"
+    :rows="rows"
+    :badgedItem="badgedItem"
+    :getData="getCdrs"
+  >
+    <template v-slot:filter>
+      <CdrFilter v-on:applyFilter="getCdrs" />
+    </template>
+  </DataTable>
 </template>
 
 <script>
 import formatDate from '../../utils/date'
 import CdrFilter from './CdrFilter'
+import DataTable from '../DataTable/DataTable'
+
 export default {
   name: 'Cdrs',
   components: {
-    CdrFilter
+    CdrFilter,
+    DataTable
   },
   data () {
     return {
-      small: true,
-      striped: true,
-      fixed: false,
-      perPage: 50,
-      currentPage: 1,
+      badgedItem: 'success',
       fields: {
         'time-start': {
           label: 'Start Time'
@@ -185,9 +151,9 @@ export default {
     },
     rows: function () {
       if (this.$store.getters.cdrs && this.$store.getters.cdrs.meta) {
-        const totalCount = this.$store.getters.cdrs.meta['total-count']
-        return totalCount
+        return this.$store.getters.cdrs.meta['total-count']
       }
+
       return 0
     }
   },

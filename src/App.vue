@@ -48,7 +48,8 @@ export default {
   text-align: left;
 }
 
-.contentTable {
+.contentTable,
+.dataTable {
   font-size: 12px;
   white-space: nowrap;
   margin-inline-start: 340px;
