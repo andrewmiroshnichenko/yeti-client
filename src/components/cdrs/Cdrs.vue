@@ -26,110 +26,145 @@ export default {
   data () {
     return {
       badgedItem: 'success',
-      fields: {
-        'time-start': {
-          label: 'Start Time'
+      fields: [
+        {
+          key: 'time-start',
+          label: 'Start Time',
+          sortable: true
         },
-        'time-connect': {
+        {
+          key: 'time-connect',
           label: 'Connect Time'
         },
-        'time-end': {
+        {
+          key: 'time-end',
           label: 'End Time'
         },
-        'duration': {
+        {
+          key: 'duration',
           label: 'Duration'
         },
-        'success': {
+        {
+          key: 'success',
           label: 'Success'
         },
-        'destination-initial-interval': {
+        {
+          key: 'destination-initial-interval',
           label: 'Destination Initial Interval'
         },
-        'destination-initial-rate': {
+        {
+          key: 'destination-initial-rate',
           label: 'Destination Initial Rate'
         },
-        'destination-next-interval': {
+        {
+          key: 'destination-next-interval',
           label: 'Destination Next Initial'
         },
-        'destination-next-rate': {
+        {
+          key: 'destination-next-rate',
           label: 'Destination Next Rate'
         },
-        'destination-fee': {
+        {
+          key: 'destination-fee',
           label: 'Destination Fee'
         },
-        'customer-price': {
+        {
+          key: 'customer-price',
           label: 'Customer Price'
         },
-        'src-name-in': {
+        {
+          key: 'src-name-in',
           label: 'Src Name In'
         },
-        'src-prefix-in': {
+        {
+          key: 'src-prefix-in',
           label: 'Src Prefix In'
         },
-        'from-domain': {
+        {
+          key: 'from-domain',
           label: 'From Domain'
         },
-        'dst-prefix-in': {
+        {
+          key: 'dst-prefix-in',
           label: 'Dst Prefix In'
         },
-        'to-domain': {
+        {
+          key: 'to-domain',
           label: 'To Domain'
         },
-        'ruri-domain': {
+        {
+          key: 'ruri-domain',
           label: 'R-URI Domain'
         },
-        'diversion-in': {
+        {
+          key: 'diversion-in',
           label: 'Diversion In'
         },
-        'local-tag': {
+        {
+          key: 'local-tag',
           label: 'Local Tag'
         },
-        'lega-disconnect-code': {
+        {
+          key: 'lega-disconnect-code',
           label: 'Leg A Disconnect Code'
         },
-        'lega-disconnect-reason': {
+        {
+          key: 'lega-disconnect-reason',
           label: 'Leg A Disconnect Reason'
         },
-        'lega-rx-payloads': {
+        {
+          key: 'lega-rx-payloads',
           label: 'Leg A Rx Payloads'
         },
-        'lega-tx-payloads': {
+        {
+          key: 'lega-tx-payloads',
           label: 'Leg A Tx Payloads'
         },
-        'auth-orig-transport-protocol-id': {
+        {
+          key: 'auth-orig-transport-protocol-id',
           label: 'Auth Origin Transport Protocol Id'
         },
-        'auth-orig-ip': {
+        {
+          key: 'auth-orig-ip',
           label: 'Auth Origin Ip'
         },
-        'auth-orig-port': {
+        {
+          key: 'auth-orig-port',
           label: 'Auth Origin Port'
         },
-        'lega-rx-bytes': {
+        {
+          key: 'lega-rx-bytes',
           label: 'Leg A Rx Bytes'
         },
-        'lega-tx-bytes': {
+        {
+          key: 'lega-tx-bytes',
           label: 'Leg A Tx Bytes'
         },
-        'lega-rx-decode-errs': {
+        {
+          key: 'lega-rx-decode-errs',
           label: 'Leg A Rx Decode Errors'
         },
-        'lega-rx-no-buf-errs': {
+        {
+          key: 'lega-rx-no-buf-errs',
           label: 'Leg A Rx No Buf Errors'
         },
-        'lega-rx-parse-errs': {
+        {
+          key: 'lega-rx-parse-errs',
           label: 'Leg A Rx Parse Errors'
         },
-        'src-prefix-routing': {
+        {
+          key: 'src-prefix-routing',
           label: 'Src Prefix Routing'
         },
-        'dst-prefix-routing': {
+        {
+          key: 'dst-prefix-routing',
           label: 'Dst Prefix Routing'
         },
-        'destination-prefix': {
+        {
+          key: 'destination-prefix',
           label: 'Destination Prefix'
         }
-      }
+      ]
     }
   },
   computed: {

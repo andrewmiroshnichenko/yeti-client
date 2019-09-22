@@ -26,38 +26,48 @@ export default {
   data () {
     return {
       badgedItem: 'rejectCalls',
-      fields: {
-        'connect-fee': {
+      fields: [
+        {
+          key:'connect-fee',
           label: 'Connect fee'
         },
-        'initial-interval': {
+        {
+          key:'initial-interval',
           label: 'Initial interval'
         },
-        'initial-rate': {
+        {
+          key:'initial-rate',
           label: 'Initial rate'
         },
-        'network-prefix': {
+        {
+          key:'network-prefix',
           label: 'Network prefix'
         },
-        'next-interval': {
+        {
+          key:'next-interval',
           label: 'Next interval'
         },
-        'next-rate': {
+        {
+          key:'next-rate',
           label: 'Next rate'
         },
-        'prefix': {
+        {
+          key:'prefix',
           label: 'Prefix'
         },
-        'reject-calls': {
+        {
+          key:'reject-calls',
           label: 'Reject calls'
         },
-        'valid-from': {
+        {
+          key:'valid-from',
           label: 'Valid from'
         },
-        'valid-till': {
+        {
+          key:'valid-till',
           label: 'Valid till'
         }
-      }
+      ]
     }
   },
   computed: {

@@ -23,35 +23,17 @@ export default {
   },
   data () {
     return {
-      fields: {
-        'type': {
-
-        },
-        'name': {
-
-        },
-        'balance': {
-
-        },
-        'min-balance': {
-
-        },
-        'max-balance': {
-
-        },
-        'destination-rate-limit': {
-
-        },
-        'origination-capacity': {
-
-        },
-        'termination-capacity': {
-
-        },
-        'total-capacity': {
-
-        }
-      }
+      fields: [
+        'type',
+        'name',
+        'balance',
+        'min-balance',
+        'max-balance',
+        'destination-rate-limit',
+        'origination-capacity',
+        'termination-capacity',
+        'total-capacity'
+      ]
     }
   },
   computed: {
