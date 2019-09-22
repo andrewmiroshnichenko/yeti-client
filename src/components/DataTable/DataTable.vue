@@ -7,6 +7,19 @@
         variant="primary"
         label="Spinning"
       />
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        v-on:change="getData"
+        :disabled="loading"
+        align="right"
+        size="sm"
+        aria-controls="dataTable"
+      />
+      <h6 class="datatable-total">
+        Items in table: {{ rows }}
+      </h6>
       <b-table
         v-if="!loading"
         :small="small"
@@ -15,6 +28,7 @@
         :striped="striped"
         :fixed="fixed"
         :fields="fields"
+        sticky-header="calc(100vh - 12rem)"
         hover
       >
         <template
@@ -29,18 +43,6 @@
           </b-badge>
         </template>
       </b-table>
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="rows"
-        :per-page="perPage"
-        v-on:change="getData"
-        :disabled="loading"
-        size="sm"
-        aria-controls="dataTable"
-      />
-      <p class="mt-3">
-        Total: {{ rows }}
-      </p>
     </div>
   </div>
 </template>
@@ -52,7 +54,7 @@ export default {
   props: ['fields', 'items', 'rows', 'badgedItem', 'getData'],
   data () {
     return {
-      small: true,
+      small: false,
       striped: true,
       fixed: false,
       perPage: 50,
@@ -69,5 +71,17 @@ export default {
 
 
 <style>
+.dataTable {
+  font-size: 12px;
+  white-space: nowrap;
+  margin-inline-start: 340px;
+  position: relative;
+}
+
+.dataTable .datatable-total {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+}
 </style>
 
