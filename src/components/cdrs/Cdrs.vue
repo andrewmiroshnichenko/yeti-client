@@ -7,7 +7,7 @@
     :getData="getCdrs"
   >
     <template v-slot:filter>
-      <CdrFilter v-on:applyFilter="getCdrs" />
+      <!-- <CdrFilter v-on:applyFilter="getCdrs" /> -->
     </template>
   </DataTable>
 </template>
@@ -20,7 +20,7 @@ import DataTable from '../DataTable/DataTable'
 export default {
   name: 'Cdrs',
   components: {
-    CdrFilter,
+    // CdrFilter,
     DataTable
   },
   data () {

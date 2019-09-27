@@ -8,16 +8,19 @@
         label="Spinning"
       />
       <b-pagination
+        v-if="!loading"
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
         v-on:change="getData"
-        :disabled="loading"
         align="right"
         size="sm"
         aria-controls="dataTable"
       />
-      <h6 class="datatable-total">
+      <h6
+        v-if="!loading"
+        class="datatable-total"
+      >
         Items in table: {{ rows }}
       </h6>
       <b-table
@@ -74,14 +77,17 @@ export default {
 .dataTable {
   font-size: 12px;
   white-space: nowrap;
-  margin-inline-start: 340px;
   position: relative;
 }
 
 .dataTable .datatable-total {
   position: absolute;
   top: 0.5rem;
-  left: 0;
+  left: 15px;
+}
+
+.dataTable .pagination {
+  padding-right: 15px;
 }
 </style>
 
