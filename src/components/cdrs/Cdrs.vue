@@ -9,23 +9,66 @@
     <template v-slot:filter>
       <!-- <CdrFilter v-on:applyFilter="getCdrs" /> -->
     </template>
+    <template v-slot:quickFilter>
+      <div class="quickfilter">
+        <strong>Filter by Start Time: </strong>
+        <date-range-picker
+          ref="picker"
+          :opens="opens"
+          :locale-data="localeData"
+          :timePicker="timePicker"
+          v-model="dateRange"
+          @update="updateValues"
+          @toggle="checkOpen"
+          :linkedCalendars="linkedCalendars"
+        >
+          >
+          <div
+            slot="input"
+            slot-scope="picker"
+            style="min-width: 250px;"
+          >
+            {{ picker.startDate | date }} - {{ picker.endDate | date }}
+          </div>
+        </date-range-picker>
+      </div>
+    </template>
   </DataTable>
 </template>
 
 <script>
+import { format }from 'date-fns'
+import DateRangePicker from 'vue2-daterange-picker'
+
 import formatDate from '../../utils/date'
 import CdrFilter from './CdrFilter'
 import DataTable from '../DataTable/DataTable'
+
+import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
+
 
 export default {
   name: 'Cdrs',
   components: {
     // CdrFilter,
-    DataTable
+    DataTable,
+    DateRangePicker
+  },
+  filters: {
+    date: function (date) {
+      return date ? format(date, 'yyyy-MM-dd hh:mm') : date
+    }
   },
   data () {
     return {
       badgedItem: 'success',
+      // Picker stuff
+      opens: 'right',
+      timePicker: true,
+      dateRange: '',
+      linkedCalendars: false,
+      localeData: { firstDay: 1, format: 'DD-MM-YYYY HH:mm:ss', applyLabel: 'Filter' },
+      // Table fields
       fields: [
         {
           key: 'time-start',
@@ -205,8 +248,11 @@ export default {
             text: err[0].detail
           })
         })
-    }
-  },
+    },
+    updateValues: function (event) {
+      console.log(event)
+    },
+  }
 }
 </script>
 

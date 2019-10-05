@@ -7,13 +7,17 @@
         variant="primary"
         label="Spinning"
       />
+      <slot
+        v-if="!loading"
+        name="quickFilter"
+      />
       <b-pagination
         v-if="!loading"
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
         v-on:change="getData"
-        align="right"
+        align="center"
         size="sm"
         aria-controls="dataTable"
       />
@@ -83,11 +87,21 @@ export default {
 .dataTable .datatable-total {
   position: absolute;
   top: 0.5rem;
+  right: 15px;
+}
+
+.dataTable .quickfilter {
+  position: absolute;
+  top: -0.2rem;
   left: 15px;
 }
 
+.dataTable .quickfilter .form-control {
+  font-size: 0.9rem;
+}
+
 .dataTable .pagination {
-  padding-right: 15px;
+  padding-left: 15px;
 }
 </style>
 
