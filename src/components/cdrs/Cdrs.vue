@@ -11,26 +11,40 @@
     </template>
     <template v-slot:quickFilter>
       <div class="quickfilter">
-        <strong>Filter by Start Time: </strong>
-        <date-range-picker
-          ref="picker"
-          :opens="opens"
-          :locale-data="localeData"
-          :timePicker="timePicker"
-          v-model="dateRange"
-          @update="updateValues"
-          @toggle="checkOpen"
-          :linkedCalendars="linkedCalendars"
-        >
+        <div>
+          <b-link>Apply custom filters</b-link>, or
+        </div>
+        <div class="quickfilter-wrapper">
+          <span>use quick filter by Start Time: </span>
+          <date-range-picker
+            ref="picker"
+            :opens="opens"
+            :locale-data="localeData"
+            :timePicker="timePicker"
+            v-model="dateRange"
+            @update="updateValues"
+            :linkedCalendars="linkedCalendars"
           >
-          <div
-            slot="input"
-            slot-scope="picker"
-            style="min-width: 250px;"
+            >
+            <div
+              slot="input"
+              slot-scope="picker"
+              style="min-width: 250px;"
+            >
+              {{ picker.startDate | date }} - {{ picker.endDate | date }}
+            </div>
+          </date-range-picker>
+          <b-button
+            v-if="Boolean(dateRange)"
+            v-on:click="onResetClick"
+            type="reset"
+            variant="light"
+            size="sm"
+            class="ml-2"
           >
-            {{ picker.startDate | date }} - {{ picker.endDate | date }}
-          </div>
-        </date-range-picker>
+            Reset
+          </b-button>
+        </div>
       </div>
     </template>
   </DataTable>
@@ -235,6 +249,9 @@ export default {
       return 0
     }
   },
+  destroyed: function () {
+    this.resetCdrFilter()
+  },
   created: function () {
     this.getCdrs()
   },
@@ -250,11 +267,28 @@ export default {
         })
     },
     updateValues: function (event) {
-      console.log(event)
+      this.$store.dispatch('setCdrFilter', {timeStartGteq: event.startDate, timeStartLteq: event.endDate})
+      this.getCdrs()
     },
+    onResetClick: function () {
+      this.$data.dateRange = ''
+      this.resetCdrFilter()
+      this.getCdrs()
+    },
+    resetCdrFilter: function () {
+      this.$store.dispatch('setCdrFilter', {})
+    }
   }
 }
 </script>
 
 <style>
+.quickfilter {
+  text-align: left;
+  padding: 0 0 10px 15px;
+}
+.quickfilter .form-control {
+  font-size: 0.9rem;
+  text-align: center;
+}
 </style>
