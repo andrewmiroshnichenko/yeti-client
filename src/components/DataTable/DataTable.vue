@@ -59,7 +59,36 @@
 <script>
 export default {
   name: 'Cdrs',
-  props: ['fields', 'items', 'rows', 'badgedItem', 'getData'],
+  props: {
+    fields: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    },
+    items: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    },
+    rows: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    },
+    badgedItem: {
+      type: String,
+      default: ''
+    },
+    getData: {
+      type: Function,
+       default: function () {
+        return []
+      }
+    }
+  },
   data () {
     return {
       small: false,
