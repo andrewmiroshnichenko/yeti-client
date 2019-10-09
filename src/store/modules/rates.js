@@ -10,6 +10,8 @@ const getters = {
 }
 const actions = {
   getRates: async ({ commit, rootState }, page) => {
+    console.log('state.rateFilter', state.rateFilter)
+
     const rates = await Rates.getRates(
       rootState.auth.token,
       state.rateFilter,
@@ -19,7 +21,7 @@ const actions = {
   },
   setRateFilter: ({ commit, rootState }, filter) => {
     if (filter) {
-      commit('saveFilter', filter)
+      commit('saveRateFilter', filter)
     }
   }
 }
@@ -27,7 +29,7 @@ const mutations = {
   setRates: (state, rates) => {
     state.rates = rates
   },
-  saveFilter: (state, filter) => {
+  saveRateFilter: (state, filter) => {
     state.rateFilter = filter
   }
 }
