@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { format, subDays }from 'date-fns'
+import { isEmpty } from 'lodash'
 import DateRangePicker from 'vue2-daterange-picker'
 
 import utils from '../../utils'
@@ -237,6 +237,9 @@ export default {
       }
       return []
     },
+    filterValue: function () {
+      return { timeStartGteq: this.$data.dateRange.startDate, timeStartLteq: this.$data.dateRange.endDate }
+    },
     loading: function () {
       return this.$store.getters.isRequestPending
     },
@@ -248,11 +251,10 @@ export default {
       return 0
     }
   },
-  destroyed: function () {
-    this.resetCdrFilter()
-  },
   created: function () {
-    this.$store.dispatch('setCdrFilter', { timeStartGteq: this.$data.dateRange.startDate, timeStartLteq: this.$data.dateRange.endDate })
+    if (isEmpty(this.$store.getters.cdrFilter)) {
+      this.$store.dispatch('setCdrFilter', this.filterValue)
+    }
     this.getCdrs()
   },
   methods: {
@@ -267,7 +269,7 @@ export default {
         })
     },
     updateValues: function (event) {
-      this.$store.dispatch('setCdrFilter', { timeStartGteq: this.$data.dateRange.startDate, timeStartLteq: this.$data.dateRange.endDate })
+      this.$store.dispatch('setCdrFilter', this.filterValue)
       this.getCdrs()
     },
     onResetClick: function () {
@@ -276,7 +278,7 @@ export default {
       this.getCdrs()
     },
     resetCdrFilter: function () {
-      this.$store.dispatch('setCdrFilter', {})
+      this.$store.dispatch('setCdrFilter', this.filterValue)
     }
   }
 }

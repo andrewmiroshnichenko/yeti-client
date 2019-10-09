@@ -10,8 +10,6 @@ const getters = {
 }
 const actions = {
   getRates: async ({ commit, rootState }, page) => {
-    console.log('state.rateFilter', state.rateFilter)
-
     const rates = await Rates.getRates(
       rootState.auth.token,
       state.rateFilter,
