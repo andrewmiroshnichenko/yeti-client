@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import formatDate from '../../utils/date'
+import { formatDate } from '../../utils'
 import RatesFilter from './RatesFilter'
 import DataTable from '../DataTable/DataTable'
 

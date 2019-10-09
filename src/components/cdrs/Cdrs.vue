@@ -54,7 +54,7 @@
 import { format }from 'date-fns'
 import DateRangePicker from 'vue2-daterange-picker'
 
-import formatDate from '../../utils/date'
+import { formatDate } from '../../utils'
 import CdrFilter from './CdrFilter'
 import DataTable from '../DataTable/DataTable'
 
