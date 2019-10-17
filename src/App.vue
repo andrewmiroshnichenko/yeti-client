@@ -10,6 +10,8 @@
 
 <script>
 import NavBar from "./components/NavBar";
+import { jsonApi } from "./api";
+
 export default {
   name: "App",
   components: {
@@ -20,6 +22,21 @@ export default {
       message: "",
       type: "error"
     };
+  },
+  beforeMount: function() {
+    const errorMiddleware = {
+      name: "logout-redirect",
+      error: payload => {
+        if (payload.message === "Request failed with status code 401") {
+          this.$store.dispatch("logout");
+          this.$router.push("/login");
+        }
+
+        return payload;
+      }
+    };
+
+    jsonApi.instance.insertMiddlewareBefore("errors", errorMiddleware);
   },
   methods: {
     setMessage(message) {

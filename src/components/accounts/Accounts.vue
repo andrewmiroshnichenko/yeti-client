@@ -45,11 +45,13 @@ export default {
   methods: {
     getAccounts: function(pageNumber) {
       this.$store.dispatch("getAccounts", pageNumber).catch(err => {
-        this.$notify({
-          type: "error",
-          title: err[0].title,
-          text: err[0].detail
-        });
+        if (err[0]) {
+          this.$notify({
+            type: "error",
+            title: err[0].title,
+            text: err[0].detail
+          });
+        }
       });
     }
   }
