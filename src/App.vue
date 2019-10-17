@@ -9,24 +9,24 @@
 </template>
 
 <script>
-import NavBar from './components/NavBar'
+import NavBar from "./components/NavBar";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    NavBar,
+    NavBar
   },
-  data () {
+  data() {
     return {
-      message: '',
-      type: 'error'
-    }
+      message: "",
+      type: "error"
+    };
   },
   methods: {
-    setMessage (message) {
-      this.message = message
+    setMessage(message) {
+      this.message = message;
     }
   }
-}
+};
 </script>
 
 <style>

@@ -53,7 +53,10 @@ export const RELATIONSHIPS = {
     srcPrefixRouting: '',
     dstPrefixRouting: '',
     destinationPrefix: '',
-    authOrigTransportProtocol: ''
+    authOrigTransportProtocol: {
+      jsonApi: 'hasMany',
+      type: 'comments'
+    }
   },
   [RESOURCES.AUTH_ORIGIN_TRANSPORT_PROTOCOL]: {
     authOrigTransportProtocol: 'authOrigTransportProtocol'
