@@ -1,4 +1,8 @@
-import Cdrs from '../../api/Cdrs'
+import { jsonApi } from '../../api'
+import { RESOURCES } from '../../static/constants/api'
+
+jsonApi.addRelationship(RESOURCES.CDR)
+jsonApi.addRelationship(RESOURCES.AUTH_ORIGIN_TRANSPORT_PROTOCOL)
 
 const state = {
   cdrs: {},
@@ -14,11 +18,11 @@ const getters = {
 const actions = {
   getCdrs: async ({ commit, rootState }, page) => {
     commit('setRequestPending', true)
-    const cdrs = await Cdrs.getCdrs(
-      rootState.auth.token,
-      state.cdrFilter,
+    const cdrs = await jsonApi.findAllResources({
+      resourceName: RESOURCES.CDR,
+      filter: state.cdrFilter,
       page
-    )
+    })
     if (cdrs.error) {
       commit('setError', cdrs.error)
     } else {

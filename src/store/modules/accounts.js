@@ -1,4 +1,7 @@
-import Accounts from '../../api/Accounts'
+import { jsonApi } from '../../api'
+import { RESOURCES } from '../../static/constants/api'
+
+jsonApi.addRelationship(RESOURCES.ACCOUNT)
 
 const state = {
   accounts: {},
@@ -15,11 +18,11 @@ const getters = {
 const actions = {
   getAccounts: async ({ commit, rootState }, page) => {
     commit('setRequestPending', true)
-    const accounts = await Accounts.getAccounts(
-      rootState.auth.token,
-      state.accountFilter,
+    const accounts = await jsonApi.findAllResources({
+      resourceName: RESOURCES.ACCOUNT,
+      filter: state.cdrFilter,
       page
-    )
+    })
     commit('setAccounts', accounts)
     commit('setRequestPending', false)
   },

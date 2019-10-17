@@ -1,4 +1,7 @@
-import Rates from '../../api/Rates'
+import { jsonApi } from '../../api'
+import { RESOURCES } from '../../static/constants/api'
+
+jsonApi.addRelationship(RESOURCES.RATE)
 
 const state = {
   rates: {},
@@ -10,11 +13,11 @@ const getters = {
 }
 const actions = {
   getRates: async ({ commit, rootState }, page) => {
-    const rates = await Rates.getRates(
-      rootState.auth.token,
-      state.rateFilter,
+    const rates = await jsonApi.findAllResources({
+      resourceName: RESOURCES.RATE,
+      filter: state.rateFilter,
       page
-    )
+    })
     commit('setRates', rates)
   },
   setRateFilter: ({ commit, rootState }, filter) => {
