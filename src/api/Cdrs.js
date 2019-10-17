@@ -39,7 +39,10 @@ jsonApi.define('cdr', {
   srcPrefixRouting: '',
   dstPrefixRouting: '',
   destinationPrefix: '',
-  authOrigTransportProtocol: ''
+  authOrigTransportProtocol: {
+    jsonApi: 'hasMany',
+    type: 'comments'
+  }
 })
 
 jsonApi.define('authOrigTransportProtocol', {
