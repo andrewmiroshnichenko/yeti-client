@@ -3,8 +3,8 @@
     :fields="fields"
     :items="rates"
     :rows="rows"
-    :badgedItem="badgedItem"
-    :getData="getRates"
+    :badged-item="badgedItem"
+    :get-data="getRates"
   >
     <template v-slot:filter>
       <!-- <RatesFilter v-on:applyFilter="getRates" /> -->
@@ -13,96 +13,96 @@
 </template>
 
 <script>
-import utils from "../../utils";
-import RatesFilter from "./RatesFilter";
-import DataTable from "../DataTable/DataTable";
+import utils from '../../utils';
+// import RatesFilter from './RatesFilter';
+import DataTable from '../DataTable/DataTable';
 
 export default {
-  name: "Rates",
+  name: 'Rates',
   components: {
     // RatesFilter,
-    DataTable
+    DataTable,
   },
   data() {
     return {
-      badgedItem: "rejectCalls",
+      badgedItem: 'rejectCalls',
       fields: [
         {
-          key: "connect-fee",
-          label: "Connect fee"
+          key: 'connect-fee',
+          label: 'Connect fee',
         },
         {
-          key: "initial-interval",
-          label: "Initial interval"
+          key: 'initial-interval',
+          label: 'Initial interval',
         },
         {
-          key: "initial-rate",
-          label: "Initial rate"
+          key: 'initial-rate',
+          label: 'Initial rate',
         },
         {
-          key: "network-prefix",
-          label: "Network prefix"
+          key: 'network-prefix',
+          label: 'Network prefix',
         },
         {
-          key: "next-interval",
-          label: "Next interval"
+          key: 'next-interval',
+          label: 'Next interval',
         },
         {
-          key: "next-rate",
-          label: "Next rate"
+          key: 'next-rate',
+          label: 'Next rate',
         },
         {
-          key: "prefix",
-          label: "Prefix"
+          key: 'prefix',
+          label: 'Prefix',
         },
         {
-          key: "reject-calls",
-          label: "Reject calls"
+          key: 'reject-calls',
+          label: 'Reject calls',
         },
         {
-          key: "valid-from",
-          label: "Valid from"
+          key: 'valid-from',
+          label: 'Valid from',
         },
         {
-          key: "valid-till",
-          label: "Valid till"
-        }
-      ]
+          key: 'valid-till',
+          label: 'Valid till',
+        },
+      ],
     };
   },
   computed: {
-    rates: function() {
+    rates() {
       const rates = this.$store.state.rates.rates.data;
       if (rates) {
-        const items = rates.map(item => {
-          item["valid-from"] = utils.formatTableDate(item["valid-from"]);
-          item["valid-till"] = utils.formatTableDate(item["valid-till"]);
-          return item;
-        });
+        const items = rates.map((item) => ({
+          ...item,
+          'valid-from': utils.formatTableDate(item['valid-from']),
+          'valid-till': utils.formatTableDate(item['valid-till']),
+        }));
         return items || [];
       }
       return [];
     },
-    rows: function() {
+    rows() {
       return this.rates ? this.rates.length : 0; // TODO: move somewhere
-    }
+    },
   },
-  created: function() {
+  created() {
     this.getRates();
   },
   methods: {
-    getRates: function(pageNumber) {
-      this.$store.dispatch("getRates", pageNumber).catch(err => {
+    getRates(pageNumber) {
+      this.$store.dispatch('getRates', pageNumber).catch((err) => {
         if (err[0]) {
           this.$notify({
-            type: "error",
+            type: 'error',
             title: err[0].title,
-            text: err[0].detail
+            text: err[0].detail,
           });
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

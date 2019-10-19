@@ -1,11 +1,11 @@
 export default {
-  getToken: async function (login, password) {
-    const headers = new Headers()
+  async getToken(login, password) {
+    const headers = new Headers();
     const data = {
       auth: {
-        login: login,
-        password: password
-      }
+        login,
+        password,
+      },
     }
     headers.append('Content-Type', 'application/json')
 
@@ -14,8 +14,8 @@ export default {
       {
         method: 'post',
         body: JSON.stringify(data),
-        headers: headers
-      }
+        headers,
+      },
     )
 
     if (response.status !== 201) {
@@ -23,5 +23,5 @@ export default {
     }
 
     return response.json()
-  }
+  },
 }
