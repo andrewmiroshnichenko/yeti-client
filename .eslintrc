@@ -7,18 +7,19 @@
   "parserOptions": {
     "parser": "babel-eslint"
   },
-  "extends": [
-    "airbnb-base",
-    "plugin:vue/recommended"
-  ],
+  "extends": ["airbnb-base", "plugin:vue/recommended"],
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".vue"
-        ]
+        "extensions": [".js", ".vue"]
       }
     }
+  },
+  "rules": {
+    "implicit-arrow-linebreak": "off",
+    "no-param-reassign": ["error", { "props": false }]
+  },
+  "globals": {
+    "CONFIG": "readonly"
   }
 }

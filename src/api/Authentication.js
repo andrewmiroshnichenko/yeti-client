@@ -6,8 +6,8 @@ export default {
         login,
         password,
       },
-    }
-    headers.append('Content-Type', 'application/json')
+    };
+    headers.append('Content-Type', 'application/json');
 
     const response = await fetch(
       `${CONFIG.yeti.apiBaseUrl}/api/rest/customer/v1/auth`,
@@ -16,12 +16,12 @@ export default {
         body: JSON.stringify(data),
         headers,
       },
-    )
+    );
 
     if (response.status !== 201) {
-      throw new Error('Authorization error')
+      throw new Error('Authorization error');
     }
 
-    return response.json()
+    return response.json();
   },
-}
+};

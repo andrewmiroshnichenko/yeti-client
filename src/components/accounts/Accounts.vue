@@ -1,10 +1,5 @@
 <template>
-  <DataTable
-    :fields="fields"
-    :items="accounts"
-    :rows="rows"
-    :get-data="getAccounts"
-  >
+  <DataTable :fields="fields" :items="accounts" :rows="rows" :get-data="getAccounts">
     <template v-slot:filter>
       <!-- <AccountsFilter v-on:applyFilter="getAccounts" /> -->
     </template>

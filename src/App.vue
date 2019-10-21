@@ -9,40 +9,46 @@
 </template>
 
 <script>
-import NavBar from "./components/NavBar";
-import { jsonApi } from "./api";
+import NavBar from './components/NavBar';
+import { jsonApi } from './api';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    NavBar
+    NavBar,
   },
   data() {
     return {
-      message: "",
-      type: "error"
+      message: '',
+      type: 'error',
     };
   },
-  beforeMount: function() {
+  beforeMount() {
     const errorMiddleware = {
-      name: "logout-redirect",
-      error: payload => {
-        if (payload.message === "Request failed with status code 401") {
-          this.$store.dispatch("logout");
-          this.$router.push("/login");
+      name: 'logout-redirect',
+      error: (payload) => {
+        this.$notify({
+          type: 'error',
+          title: payload.title,
+          text: payload.detail,
+        });
+
+        if (payload.message === 'Request failed with status code 401') {
+          this.$store.dispatch('logout');
+          this.$router.push('/login');
         }
 
         return payload;
-      }
+      },
     };
 
-    jsonApi.instance.insertMiddlewareBefore("errors", errorMiddleware);
+    jsonApi.instance.insertMiddlewareAfter('errors', errorMiddleware);
   },
   methods: {
     setMessage(message) {
       this.message = message;
-    }
-  }
+    },
+  },
 };
 </script>
 

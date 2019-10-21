@@ -3,8 +3,8 @@
     :fields="fields"
     :items="cdrs"
     :rows="rows"
-    :badgedItem="badgedItem"
-    :getData="getCdrs"
+    :badged-item="badgedItem"
+    :get-data="getCdrs"
   >
     <template v-slot:filter>
       <!-- <CdrFilter v-on:applyFilter="getCdrs" /> -->
@@ -18,12 +18,12 @@
           <span>use quick filter by Start Time:&nbsp;</span>
           <date-range-picker
             ref="picker"
+            v-model="dateRange"
             :opens="opens"
             :locale-data="localeData"
-            :timePicker="timePicker"
-            v-model="dateRange"
+            :time-picker="timePicker"
+            :linked-calendars="linkedCalendars"
             @update="updateValues"
-            :linkedCalendars="linkedCalendars"
           >
             >
             <div
@@ -35,11 +35,11 @@
             </div>
           </date-range-picker>
           <b-button
-            v-on:click="onResetClick"
             type="reset"
             variant="light"
             size="sm"
             class="ml-2"
+            @click="onResetClick"
           >
             Reset
           </b-button>
@@ -50,13 +50,13 @@
 </template>
 
 <script>
-import { isEmpty } from 'lodash'
-import DateRangePicker from 'vue2-daterange-picker'
+import { isEmpty } from 'lodash';
+import DateRangePicker from 'vue2-daterange-picker';
 
-import utils from '../../utils'
-import DataTable from '../DataTable/DataTable'
+import utils from '../../utils';
+import DataTable from '../DataTable/DataTable';
 
-import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
+import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 
 export default {
   name: 'Cdrs',
@@ -66,11 +66,11 @@ export default {
     DateRangePicker,
   },
   filters: {
-    date (dateStr) {
-      return utils.formatPickerDate(dateStr)
+    date(dateStr) {
+      return utils.formatPickerDate(dateStr);
     },
   },
-  data () {
+  data() {
     return {
       badgedItem: 'success',
       // Picker stuff
@@ -223,71 +223,53 @@ export default {
           label: 'Destination Prefix',
         },
       ],
-    }
+    };
   },
   computed: {
-    cdrs () {
-      const cdrs = this.$store.getters.cdrs.data
-      if (cdrs) {
-        const items = cdrs.map((item) => {
-          item['time-start'] = utils.formatTableDate(item['time-start'])
-          item['time-connect'] = utils.formatTableDate(item['time-connect'])
-          item['time-end'] = utils.formatTableDate(item['time-end'])
-          return item
-        })
-        return items || []
-      }
-      return []
+    cdrs() {
+      return this.$store.getters.cdrs;
     },
-    filterValue () {
+    filterValue() {
       return {
         timeStartGteq: this.$data.dateRange.startDate,
         timeStartLteq: this.$data.dateRange.endDate,
-      }
+      };
     },
-    loading () {
-      return this.$store.getters.isRequestPending
+    loading() {
+      return this.$store.getters.isRequestPending;
     },
-    rows () {
+    rows() {
       if (this.$store.getters.cdrs && this.$store.getters.cdrs.meta) {
-        return this.$store.getters.cdrs.meta['total-count']
+        return this.$store.getters.cdrs.meta['total-count'];
       }
 
-      return 0
+      return 0;
     },
   },
-  created () {
+  created() {
     if (isEmpty(this.$store.getters.cdrFilter)) {
-      this.$store.dispatch('setCdrFilter', this.filterValue)
+      this.$store.dispatch('setCdrFilter', this.filterValue);
     }
-    this.getCdrs()
+    this.getCdrs();
   },
   methods: {
-    getCdrs (pageNumber) {
-      this.$store.dispatch('getCdrs', pageNumber).catch((err) => {
-        if (err[0]) {
-          this.$notify({
-            type: 'error',
-            title: err[0].title,
-            text: err[0].detail,
-          })
-        }
-      })
+    getCdrs(pageNumber) {
+      this.$store.dispatch('getCdrs', pageNumber);
     },
-    updateValues (event) {
-      this.$store.dispatch('setCdrFilter', this.filterValue)
-      this.getCdrs()
+    updateValues() {
+      this.$store.dispatch('setCdrFilter', this.filterValue);
+      this.getCdrs();
     },
-    onResetClick () {
-      this.$data.dateRange = utils.getLast24Hours()
-      this.resetCdrFilter()
-      this.getCdrs()
+    onResetClick() {
+      this.$data.dateRange = utils.getLast24Hours();
+      this.resetCdrFilter();
+      this.getCdrs();
     },
-    resetCdrFilter () {
-      this.$store.dispatch('setCdrFilter', this.filterValue)
+    resetCdrFilter() {
+      this.$store.dispatch('setCdrFilter', this.filterValue);
     },
   },
-}
+};
 </script>
 
 <style>

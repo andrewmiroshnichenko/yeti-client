@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import utils from '../../utils';
 // import RatesFilter from './RatesFilter';
 import DataTable from '../DataTable/DataTable';
 
@@ -72,16 +71,7 @@ export default {
   },
   computed: {
     rates() {
-      const rates = this.$store.state.rates.rates.data;
-      if (rates) {
-        const items = rates.map((item) => ({
-          ...item,
-          'valid-from': utils.formatTableDate(item['valid-from']),
-          'valid-till': utils.formatTableDate(item['valid-till']),
-        }));
-        return items || [];
-      }
-      return [];
+      return this.$store.getters.rates;
     },
     rows() {
       return this.rates ? this.rates.length : 0; // TODO: move somewhere
@@ -92,15 +82,7 @@ export default {
   },
   methods: {
     getRates(pageNumber) {
-      this.$store.dispatch('getRates', pageNumber).catch((err) => {
-        if (err[0]) {
-          this.$notify({
-            type: 'error',
-            title: err[0].title,
-            text: err[0].detail,
-          });
-        }
-      });
+      this.$store.dispatch('getRates', pageNumber);
     },
   },
 };
