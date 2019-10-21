@@ -21,11 +21,8 @@ export class JsonApi {
     this.instance.define(resource, RELATIONSHIPS[resource]);
   };
 
-  findAllResources = ({ resourceName, filter, page }) => {
-    this.instance.headers.Authorization = 'Bearer1';
-
+  findAllResources = ({ resourceName, filter, page }) =>
     this.instance.findAll(resourceName, { filter, page });
-  };
 
   setToken = (token) => {
     this.instance.headers.Authorization = `Bearer ${token}`;
