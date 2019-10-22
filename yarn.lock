@@ -4637,9 +4637,9 @@ electron-to-chromium@^1.3.284:
 >>>>>>> Massive lint updates
 
 electron-to-chromium@^1.3.284:
-  version "1.3.290"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.290.tgz#a3f345abe4f1fb0a2fedf51193f4f4489bb94a82"
-  integrity sha512-pkKffog2KZ5PPcC8ITNXDpucznLFVVLUS2Us0tBF0Qy9114vzDpgWntvFNE1uYEmMUIrWGFu4rDMHwgQAbNYyQ==
+  version "1.3.291"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.291.tgz#30b3560e24636eceab2394a3d4a6c228bef3376c"
+  integrity sha512-S/VV87D03cZqIYS5/8sVPp086tGcSW8+VxLArS2L0YzhhhVk+h1n/jKWW5tKo66EQzqqhBW48zw61t5L8zA1ew==
 
 elliptic@^6.0.0:
   version "6.5.1"
@@ -4897,6 +4897,7 @@ eslint-scope@^4.0.0, eslint-scope@^4.0.3:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 eslint-utils@^1.3.0, eslint-utils@^1.3.1:
 <<<<<<< HEAD
   version "1.4.2"
@@ -4967,6 +4968,8 @@ eslint@^6.0.1:
 >>>>>>> Bump eslint-utils from 1.3.1 to 1.4.2
 =======
 >>>>>>> Massive lint updates
+=======
+>>>>>>> yarn
 eslint-utils@^1.3.1, eslint-utils@^1.4.2:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/eslint-utils/-/eslint-utils-1.4.3.tgz#74fec7c54d0776b6f67e0251040b5806564e981f"
@@ -5011,13 +5014,14 @@ eslint@^6.0.1:
   resolved "https://registry.yarnpkg.com/eslint-utils/-/eslint-utils-1.3.1.tgz#9a851ba89ee7c460346f97cf8939c7298827e512"
   integrity sha512-Z7YjnIldX+2XMcjr7ZkgEsOj/bREONV60qYeB/bjMAqqqZ4zxKyWX+BOUkdmRmA9riiIPVvo5x86m5elviOk0Q==
 =======
+=======
+>>>>>>> yarn
 eslint-utils@^1.3.1, eslint-utils@^1.4.2:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/eslint-utils/-/eslint-utils-1.4.3.tgz#74fec7c54d0776b6f67e0251040b5806564e981f"
   integrity sha512-fbBN5W2xdY45KulGXmLHZ3c3FHfVYmKg0IrAKGOkT/464PQsx2UeIzfz1RmEci+KLm1bBaAzZAh8+/E+XAeZ8Q==
   dependencies:
     eslint-visitor-keys "^1.1.0"
->>>>>>> Massive lint updates
 
 <<<<<<< HEAD
 eslint-visitor-keys@^1.0.0:
@@ -5037,12 +5041,15 @@ eslint@^5.16.0:
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
   integrity sha512-S3Rz11i7c8AA5JPv7xAH+dOyq/Cu/VXHiHXBPOU1k/JAM5dXqQPt3qcrhpHSorXmrpu2g0gkIBVXAqCpzfoZIg==
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> API service: refactoring + token exiring redirects (#7)
 >>>>>>> API service: refactoring + token exiring redirects (#7)
 >>>>>>> API service: refactoring + token exiring redirects (#7)
+=======
+>>>>>>> yarn
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -7409,12 +7416,15 @@ locate-path@^3.0.0:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 lodash.defaultsdeep@^4.6.0:
 =======
 =======
 >>>>>>> Bump lodash.defaultsdeep from 4.6.0 to 4.6.1
 =======
 >>>>>>> API service: refactoring + token exiring redirects (#7)
+=======
+>>>>>>> yarn
 locate-path@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-5.0.0.tgz#1afba396afd676a6d42504d0a67a3a7eb9f62aa0"
@@ -7426,6 +7436,8 @@ locate-path@^5.0.0:
 >>>>>>> API service: refactoring + token exiring redirects (#7)
 lodash.defaultsdeep@^4.6.0:
 =======
+=======
+>>>>>>> yarn
 locate-path@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-5.0.0.tgz#1afba396afd676a6d42504d0a67a3a7eb9f62aa0"
@@ -7434,7 +7446,6 @@ locate-path@^5.0.0:
     p-locate "^4.1.0"
 
 lodash.defaultsdeep@^4.6.1:
->>>>>>> API service: refactoring + token exiring redirects (#7)
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
   integrity sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==
@@ -7489,6 +7500,7 @@ lodash.uniq@^4.5.0:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 lodash@4.x, lodash@^4.11.2, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
@@ -7509,6 +7521,8 @@ lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17
 >>>>>>> API service: refactoring + token exiring redirects (#7)
 =======
 >>>>>>> Massive lint updates
+=======
+>>>>>>> yarn
 lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4:
 =======
 lodash@4.x, lodash@^4.11.2, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
@@ -7541,7 +7555,13 @@ lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
 lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4:
 >>>>>>> Massive lint updates
 >>>>>>> Massive lint updates
+<<<<<<< HEAD
 >>>>>>> Massive lint updates
+=======
+=======
+lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4:
+>>>>>>> yarn
+>>>>>>> yarn
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
