@@ -17,7 +17,7 @@ const actions = {
     commit('authSuccess', jwt);
     sessionStorage.setItem('yeti-token', jwt);
   },
-  localAuth({ commit }) {
+  localAuth: ({ commit }) => {
     const jwt = sessionStorage.getItem('yeti-token');
 
     jsonApi.setToken(jwt);
