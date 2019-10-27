@@ -1,11 +1,16 @@
 export const RESOURCES = {
-  RATE: 'rate',
-  CDR: 'cdr',
+  RATE: 'rates',
+  CDR: 'cdrs',
   AUTH_ORIGIN_TRANSPORT_PROTOCOL: 'authOrigTransportProtocol',
-  ACCOUNT: 'account',
+  ACCOUNT: 'accounts',
+  AUTH: 'auth',
 };
 
 export const RELATIONSHIPS = {
+  [RESOURCES.AUTH]: {
+    username: '',
+    password: '',
+  },
   [RESOURCES.RATE]: {
     prefix: '',
     'initial-rate': '',

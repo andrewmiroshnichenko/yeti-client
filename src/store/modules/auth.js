@@ -2,11 +2,11 @@ import Authentication from '../../api/Authentication';
 import { jsonApi } from '../../api';
 
 const state = {
-  token: '',
+  token: sessionStorage.getItem('yeti-token'),
   status: '',
 };
 const getters = {
-  isAuthenticated: () => !!state.token,
+  isAuthenticated: () => Boolean(state.token),
   authStatus: () => state.status,
 };
 const actions = {

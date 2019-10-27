@@ -6,6 +6,7 @@ export class JsonApi {
   constructor() {
     this.instance = new Api({
       apiUrl: `${CONFIG.yeti.apiBaseUrl}/api/rest/customer/v1`,
+      pluralize: false,
     });
 
     this.initializeResources();
@@ -21,12 +22,13 @@ export class JsonApi {
     this.instance.define(resource, RELATIONSHIPS[resource]);
   };
 
-  findAllResources = ({ resourceName, filter, page }) =>
-    this.instance.findAll(resourceName, { filter, page });
+  findAllResources = (resourceName, data) => this.instance.findAll(resourceName, data);
 
   setToken = (token) => {
     this.instance.headers.Authorization = `Bearer ${token}`;
   };
+
+  createResource = (resourceName, data) => this.instance.create(resourceName, data)
 }
 
 export const jsonApi = new JsonApi();
