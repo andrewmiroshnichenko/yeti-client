@@ -8,8 +8,9 @@ export const RESOURCES = {
 
 export const RELATIONSHIPS = {
   [RESOURCES.AUTH]: {
-    username: '',
+    login: '',
     password: '',
+    jwt: '',
   },
   [RESOURCES.RATE]: {
     prefix: '',

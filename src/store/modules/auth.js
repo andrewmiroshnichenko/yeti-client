@@ -1,5 +1,5 @@
-import Authentication from '../../api/Authentication';
 import { jsonApi } from '../../api';
+import { RESOURCES } from '../../static/constants/api';
 
 const state = {
   token: sessionStorage.getItem('yeti-token'),
@@ -10,8 +10,10 @@ const getters = {
   authStatus: () => state.status,
 };
 const actions = {
-  authRequest: async ({ commit }, { username, password }) => {
-    const { jwt } = await Authentication.getToken(username, password);
+  authRequest: async ({ commit }, { login, password }) => {
+    const { data: { jwt } } = await jsonApi.createResource(RESOURCES.AUTH, {
+      login, password,
+    });
 
     jsonApi.setToken(jwt);
     commit('authSuccess', jwt);
