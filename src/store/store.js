@@ -5,6 +5,7 @@ import rates from './modules/rates';
 import accounts from './modules/accounts';
 import errors from './modules/errors';
 import cdrs from './modules/cdrs';
+import config from './modules/config';
 
 Vue.use(Vuex);
 
@@ -18,5 +19,6 @@ export default new Vuex.Store({
     accounts,
     errors,
     cdrs,
+    config,
   },
 });
