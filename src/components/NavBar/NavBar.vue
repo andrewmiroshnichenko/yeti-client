@@ -79,6 +79,7 @@ export default {
     text-align: center;
     height: 200px;
     padding: 70px 20px 0;
+    color: gray;
   }
 
   .menu-collapse {
