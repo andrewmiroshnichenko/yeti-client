@@ -8,7 +8,9 @@ const state = {
   accountFilter: {},
 };
 const getters = {
-  accounts: (currentState) => currentState.accounts,
+  accounts: (currentState) => ({
+    items: currentState.accounts.data, meta: currentState.accounts.meta,
+  }),
   isRequestPending: (currentState) => currentState.requestPending,
   accountsFilter: (currentState) => currentState.accountsFilter,
 };

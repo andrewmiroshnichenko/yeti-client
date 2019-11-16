@@ -7,7 +7,10 @@ const state = {
   rateFilter: {},
 };
 const getters = {
-  rates: (currentState) => utils.normalizeRates(currentState.rates.data),
+  rates: (currentState) => ({
+    items: utils.normalizeRates(currentState.rates.data),
+    meta: currentState.rates.meta,
+  }),
   rateFilter: (currentState) => currentState.rateFilter,
 };
 const actions = {

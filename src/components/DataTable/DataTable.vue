@@ -42,7 +42,7 @@
         </template>
       </b-table>
       <b-pagination
-        v-if="!loading"
+        v-if="!loading && rows >= perPage"
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
@@ -99,6 +99,9 @@ export default {
   computed: {
     loading() {
       return this.$store.getters.isRequestPending;
+    },
+    onlyOnePage() {
+      return false;
     },
   },
 };

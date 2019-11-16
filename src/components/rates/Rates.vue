@@ -71,10 +71,11 @@ export default {
   },
   computed: {
     rates() {
-      return this.$store.getters.rates;
+      return this.$store.getters.rates.items;
     },
     rows() {
-      return this.rates ? this.rates.length : 0; // TODO: move somewhere
+      return this.$store.getters.rates && this.$store.getters.rates.meta
+        ? this.$store.getters.rates.meta['total-count'] : 0;
     },
   },
   created() {

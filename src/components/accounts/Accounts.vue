@@ -38,10 +38,11 @@ export default {
   },
   computed: {
     accounts() {
-      return this.$store.state.accounts.accounts.data; // TODO: move somewhere
+      return this.$store.getters.accounts.items;
     },
     rows() {
-      return this.accounts ? this.accounts.length : 0; // TODO: move somewhere
+      return this.$store.getters.accounts && this.$store.getters.accounts.meta
+        ? this.$store.getters.accounts.meta['total-count'] : 0;
     },
   },
   created() {

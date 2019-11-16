@@ -227,7 +227,7 @@ export default {
   },
   computed: {
     cdrs() {
-      return this.$store.getters.cdrs;
+      return this.$store.getters.cdrs.items;
     },
     filterValue() {
       return {
@@ -239,11 +239,8 @@ export default {
       return this.$store.getters.isRequestPending;
     },
     rows() {
-      if (this.$store.getters.cdrs && this.$store.getters.cdrs.meta) {
-        return this.$store.getters.cdrs.meta['total-count'];
-      }
-
-      return 0;
+      return this.$store.getters.cdrs && this.$store.getters.cdrs.meta
+        ? this.$store.getters.cdrs.meta['total-count'] : 0;
     },
   },
   created() {
