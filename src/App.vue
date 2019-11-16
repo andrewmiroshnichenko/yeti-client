@@ -83,6 +83,9 @@ main {
 }
 
 .working-area-wrapper {
-  flex: 1 1 100%;
+  flex: 1 1 auto;
+  width: calc(100vw - 230px);
+  padding: 10px;
+  background-color: #ecf0f5;
 }
 </style>

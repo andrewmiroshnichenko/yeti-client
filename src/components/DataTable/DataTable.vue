@@ -26,7 +26,7 @@
         :striped="striped"
         :fixed="fixed"
         :fields="fields"
-        sticky-header="calc(100vh - 30rem)"
+        sticky-header="calc(100vh - 12rem)"
         hover
       >
         <template

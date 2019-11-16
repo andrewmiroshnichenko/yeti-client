@@ -17,25 +17,28 @@
         >
           Statistics pages
         </b-button>
-        <b-collapse id="statistics-pages-collapse">
+        <b-collapse
+          id="statistics-pages-collapse"
+          v-model="statisticsVisible"
+        >
           <b-nav-item
-            :active="this.$route.path === '/rates'"
+            :active="this.$route.path === paths.RATES"
             router-link
-            to="/rates"
+            :to="paths.RATES"
           >
             Rates
           </b-nav-item>
           <b-nav-item
-            :active="this.$route.path === '/cdrs'"
+            :active="this.$route.path === paths.CDRS"
             router-link
-            to="/cdrs"
+            :to="paths.CDRS"
           >
             Cdrs
           </b-nav-item>
           <b-nav-item
-            :active="this.$route.path === '/accounts'"
+            :active="this.$route.path === paths.ACCOUNTS"
             router-link
-            to="/accounts"
+            :to="paths.ACCOUNTS"
           >
             Accounts
           </b-nav-item>
@@ -47,20 +50,28 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { STATISTICS_PATHS } from '../../constants/routing';
 
 export default {
   name: 'NavBar',
   data() {
-    return ({
-      breadcrumbsNames: {
-        '/cdrs': 'CDRs',
-        '/rates': 'Rates',
-        '/accounts': 'Accounts',
-      },
-    });
+    return {
+      paths: { ...STATISTICS_PATHS },
+    };
   },
   computed: {
     ...mapGetters(['isAuthenticated']),
+    statisticsVisible: {
+      get() {
+        return Object.keys(STATISTICS_PATHS).some((path) => this.$route.path === path);
+      },
+
+      // Silly setter just to suppress vue warning
+      set() {
+        return null;
+      },
+    },
+
   },
 };
 </script>
