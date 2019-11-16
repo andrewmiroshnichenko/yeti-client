@@ -1,14 +1,19 @@
 <template>
-  <DataTable
-    :fields="fields"
-    :items="accounts"
-    :rows="rows"
-    :get-data="getAccounts"
-  >
-    <template v-slot:filter>
-      <!-- <AccountsFilter v-on:applyFilter="getAccounts" /> -->
-    </template>
-  </DataTable>
+  <div>
+    <h3 class="text-left pl-5">
+      Accounts
+    </h3>
+    <DataTable
+      :fields="fields"
+      :items="accounts"
+      :rows="rows"
+      :get-data="getAccounts"
+    >
+      <template v-slot:filter>
+        <!-- <AccountsFilter v-on:applyFilter="getAccounts" /> -->
+      </template>
+    </DataTable>
+  </div>
 </template>
 
 <script>

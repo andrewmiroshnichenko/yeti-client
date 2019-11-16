@@ -108,20 +108,24 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 .dataTable {
   font-size: 12px;
   white-space: nowrap;
   position: relative;
-}
 
-.dataTable .datatable-total {
-  position: absolute;
-  top: 0.5rem;
-  right: 15px;
-}
+  .datatable-total {
+    position: absolute;
+    top: 0.5rem;
+    right: 15px;
+  }
 
-.dataTable .pagination {
-  padding-left: 15px;
+  .pagination {
+    padding-left: 15px;
+  }
+
+  tr:nth-child(2n) {
+    background-color: #fff;
+  }
 }
 </style>
