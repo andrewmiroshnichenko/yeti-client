@@ -60,15 +60,25 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .vertical-navbar-menu {
   height: 100%;
   flex: 0.1 0 auto;
 }
-.vertical-navbar-menu nav {
-  height: 100%;
-}
-.vertical-navbar-menu .navbar-collapse {
-  align-self: flex-start;
+// .vertical-navbar-menu nav {
+//   height: 100%;
+// }
+// .vertical-navbar-menu .navbar-collapse {
+//   align-self: flex-start;
+// }
+
+.vertical-navbar-menu {
+  nav {
+    height: 100%;
+  }
+
+  .navbar-collapse {
+    align-self: flex-start;
+  }
 }
 </style>
