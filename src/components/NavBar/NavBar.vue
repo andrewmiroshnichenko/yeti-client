@@ -1,50 +1,53 @@
 <template>
   <div
     v-if="isAuthenticated"
-    class="vertical-navbar-menu"
+    :class="mainNavClass"
   >
-    <b-collapse
-      id="nav-bar-collapse"
-      visible
+    <b-button
+      v-b-toggle
+      class="nav-bar-collapse-button"
+      :pressed.sync="navOpened"
     >
-      <b-nav vertical>
-        <div class="placeholder-for-future-use">
-          Search element can be placed here
-        </div>
-        <b-button
-          v-b-toggle.statistics-pages-collapse
-          class="menu-collapse"
+      Toggle NavBar
+    </b-button>
+
+    <b-nav vertical>
+      <div class="placeholder-for-future-use">
+        Search element can be placed here
+      </div>
+      <b-button
+        v-b-toggle.statistics-pages-collapse
+        class="menu-collapse"
+      >
+        Statistics pages
+      </b-button>
+      <b-collapse
+        id="statistics-pages-collapse"
+        v-model="statisticsVisible"
+      >
+        <b-nav-item
+          :active="this.$route.path === paths.RATES"
+          router-link
+          :to="paths.RATES"
         >
-          Statistics pages
-        </b-button>
-        <b-collapse
-          id="statistics-pages-collapse"
-          v-model="statisticsVisible"
+          Rates
+        </b-nav-item>
+        <b-nav-item
+          :active="this.$route.path === paths.CDRS"
+          router-link
+          :to="paths.CDRS"
         >
-          <b-nav-item
-            :active="this.$route.path === paths.RATES"
-            router-link
-            :to="paths.RATES"
-          >
-            Rates
-          </b-nav-item>
-          <b-nav-item
-            :active="this.$route.path === paths.CDRS"
-            router-link
-            :to="paths.CDRS"
-          >
-            Cdrs
-          </b-nav-item>
-          <b-nav-item
-            :active="this.$route.path === paths.ACCOUNTS"
-            router-link
-            :to="paths.ACCOUNTS"
-          >
-            Accounts
-          </b-nav-item>
-        </b-collapse>
-      </b-nav>
-    </b-collapse>
+          Cdrs
+        </b-nav-item>
+        <b-nav-item
+          :active="this.$route.path === paths.ACCOUNTS"
+          router-link
+          :to="paths.ACCOUNTS"
+        >
+          Accounts
+        </b-nav-item>
+      </b-collapse>
+    </b-nav>
   </div>
 </template>
 
@@ -57,13 +60,14 @@ export default {
   data() {
     return {
       paths: { ...STATISTICS_PATHS },
+      navOpened: true,
     };
   },
   computed: {
     ...mapGetters(['isAuthenticated']),
     statisticsVisible: {
       get() {
-        return Object.keys(STATISTICS_PATHS).some((path) => this.$route.path === path);
+        return Object.values(STATISTICS_PATHS).some((path) => this.$route.path === path);
       },
 
       // Silly setter just to suppress vue warning
@@ -71,7 +75,9 @@ export default {
         return null;
       },
     },
-
+    mainNavClass() {
+      return `vertical-navbar-menu ${this.$data.navOpened ? 'opened' : 'collapsed'}`;
+    },
   },
 };
 </script>
@@ -79,8 +85,42 @@ export default {
 <style lang="scss">
 .vertical-navbar-menu {
   height: 100%;
-  flex: 1 0 230px;
+  flex: 1 1 230px;
   background-color: #222d32;
+  position: relative;
+  transition: all ease-in-out 0.5s;
+
+  & > .nav {
+    width: 230px;
+    transition: all ease-in-out 0.5s 0.1s;
+    opacity: 1;
+  }
+
+  &.collapsed {
+    & > .nav {
+      width: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    flex-basis: 0px;
+    flex-grow: 0;
+
+    .nav-bar-collapse-button {
+      opacity: 0.5;
+    }
+  }
+
+  .nav-bar-collapse-button {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: initial;
+    box-shadow: initial;
+    transition: all ease-in-out 0.5s;
+  }
 
   & * {
     text-align: left;
