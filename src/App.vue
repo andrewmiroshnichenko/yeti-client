@@ -1,20 +1,25 @@
 <template>
   <div id="app">
-    <NavBar />
+    <TopBar />
     <notifications />
     <main>
-      <router-view />
+      <NavBar />
+      <div class="working-area-wrapper">
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar';
+import TopBar from './components/TopBar/TopBar';
+import NavBar from './components/NavBar/NavBar';
 import { jsonApi } from './api';
 
 export default {
   name: 'App',
   components: {
+    TopBar,
     NavBar,
   },
   data() {
@@ -71,5 +76,13 @@ export default {
   width: 320px;
   float: left;
   text-align: left;
+}
+main {
+  height: calc(100vh - 56px);
+  display: flex;
+}
+
+.working-area-wrapper {
+  flex: 0.9 0 auto;
 }
 </style>
