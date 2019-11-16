@@ -83,6 +83,6 @@ main {
 }
 
 .working-area-wrapper {
-  flex: 0.9 0 auto;
+  flex: 1 0 100%;
 }
 </style>
