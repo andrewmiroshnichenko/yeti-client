@@ -1,9 +1,10 @@
 import store from '../store/store';
+import { GENERAL_PATHS } from '../constants/routing';
 
 export const requiresAuth = (to) => ({
   allowed: store.getters.isAuthenticated,
   nextRouteInfo: {
-    path: '/login',
+    path: GENERAL_PATHS.LOG_IN,
     query: {
       redirect: to.fullPath,
     },
