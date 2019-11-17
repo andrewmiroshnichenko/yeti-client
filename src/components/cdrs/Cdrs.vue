@@ -218,6 +218,11 @@ export default {
     onReset() {
       this.$data.dateRange = utils.getLast24Hours();
     },
+    toggleIfNotLoading() {
+      if (this.loading) {
+        this.$refs.picker.open = false;
+      }
+    },
   },
 };
 </script>
