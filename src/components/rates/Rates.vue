@@ -7,7 +7,6 @@
       :fields="fields"
       :items="rates"
       :rows="rows"
-      :badged-item="badgedItem"
       :get-data="getRates"
     >
       <template v-slot:filter>
@@ -31,7 +30,6 @@ export default {
   },
   data() {
     return {
-      badgedItem: 'rejectCalls',
       fields: [
         {
           key: 'connect-fee',

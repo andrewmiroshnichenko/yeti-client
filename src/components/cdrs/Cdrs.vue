@@ -7,7 +7,6 @@
       :fields="fields"
       :items="cdrs"
       :rows="rows"
-      :badged-item="badgedItem"
       :get-data="getCdrs"
     >
       <template v-slot:filter>
@@ -49,7 +48,6 @@ export default {
   data() {
     return {
       dateRange: utils.getLast24Hours(),
-      badgedItem: 'success',
       // Table fields
       fields: [
         {

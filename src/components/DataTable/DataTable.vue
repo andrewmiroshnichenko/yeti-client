@@ -48,17 +48,6 @@
             </b>
           </div>
         </template>
-        <template
-          :slot="badgedItem"
-          slot-scope="row"
-        >
-          <b-badge
-            :variant="row.item[badgedItem] ? 'success' : 'danger'"
-            pill
-          >
-            {{ row.item[badgedItem] }}
-          </b-badge>
-        </template>
       </b-table>
       <b-pagination
         v-if="!loading && rows >= perPage"
@@ -94,10 +83,6 @@ export default {
     rows: {
       type: Number,
       default: 0,
-    },
-    badgedItem: {
-      type: String,
-      default: '',
     },
     getData: {
       type: Function,
