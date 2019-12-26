@@ -5,7 +5,6 @@
       :style="{overflow: hiddenIfLoading}"
       class="dataTable"
     >
-
       <slot
         name="quickFilter"
       />
@@ -18,9 +17,9 @@
       </h6>
 
       <b-progress
+        v-if="loading"
         :value="100"
         :animated="true"
-        v-if="loading"
         variant="secondary"
         class="mt-1"
         height="7px"
@@ -35,12 +34,12 @@
         :fields="fields"
         class="datatable-content"
         show-empty
-        sticky-header="calc(100vh - 12rem)"
+        sticky-header="calc(100vh - 15rem)"
         hover
       >
-
         <template
-          v-slot:empty="scope">
+          v-slot:empty="scope"
+        >
           <div
             class="text-left"
           >
@@ -143,10 +142,11 @@ export default {
     right: 15px;
   }
 
-  .datatable-content {
-    display: table;
-    min-width: 100%;
-  }
+  // @todo this code breaks layout of table with large number of entries
+  // .datatable-content {
+  //   display: table;
+  //   min-width: 100%;
+  // }
 
   .pagination {
     padding-left: 15px;

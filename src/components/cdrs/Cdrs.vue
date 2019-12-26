@@ -44,8 +44,8 @@
               variant="light"
               size="sm"
               class="ml-2"
-              @click="onResetClick"
               :disabled="loading"
+              @click="onResetClick"
             >
               Reset
             </b-button>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { isEmpty } from 'lodash';
+import { isEmpty, flow } from 'lodash';
 import DateRangePicker from 'vue2-daterange-picker';
 
 import utils from '../../utils';
@@ -234,7 +234,9 @@ export default {
   },
   computed: {
     cdrs() {
-      return this.$store.getters.cdrs.items;
+      console.log('this.$store.getters.cdrs.items', this.$store.getters.cdrs.items && this.$store.getters.cdrs.items.length);
+
+      return flow(utils.formatCdrs, utils.colorCdrsTable)(this.$store.getters.cdrs.items);
     },
     filterValue() {
       return {

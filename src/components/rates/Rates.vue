@@ -18,8 +18,10 @@
 </template>
 
 <script>
+import { flow } from 'lodash';
 // import RatesFilter from './RatesFilter';
 import DataTable from '../DataTable/DataTable';
+import utils from '../../utils';
 
 export default {
   name: 'Rates',
@@ -76,7 +78,7 @@ export default {
   },
   computed: {
     rates() {
-      return this.$store.getters.rates.items;
+      return flow(utils.formatRates)(this.$store.getters.rates.items);
     },
     rows() {
       return this.$store.getters.rates && this.$store.getters.rates.meta
