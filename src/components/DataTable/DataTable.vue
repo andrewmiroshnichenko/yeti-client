@@ -1,14 +1,11 @@
 <template>
   <div id="dataTable">
     <slot name="filter" />
-    <div class="dataTable">
-      <b-spinner
-        v-if="loading"
-        variant="primary"
-        label="Spinning"
-      />
+    <div
+      :style="{overflow: hiddenIfLoading}"
+      class="dataTable"
+    >
       <slot
-        v-if="!loading"
         name="quickFilter"
       />
 
@@ -18,27 +15,38 @@
       >
         Items in table: {{ rows }}
       </h6>
+
+      <b-progress
+        v-if="loading"
+        :value="100"
+        :animated="true"
+        variant="secondary"
+        class="mt-1"
+        height="7px"
+      />
       <b-table
-        v-if="!loading"
+        :busy="loading"
         :small="small"
         :items="items"
         :per-page="perPage"
         :striped="striped"
         :fixed="fixed"
         :fields="fields"
-        sticky-header="calc(100vh - 12rem)"
+        class="datatable-content"
+        show-empty
+        sticky-header="calc(100vh - 15rem)"
         hover
       >
         <template
-          :slot="badgedItem"
-          slot-scope="row"
+          v-slot:empty="scope"
         >
-          <b-badge
-            :variant="row.item[badgedItem] ? 'success' : 'danger'"
-            pill
+          <div
+            class="text-left"
           >
-            {{ row.item[badgedItem] }}
-          </b-badge>
+            <b>
+              {{ scope.emptyFilteredText }}
+            </b>
+          </div>
         </template>
       </b-table>
       <b-pagination
@@ -76,10 +84,6 @@ export default {
       type: Number,
       default: 0,
     },
-    badgedItem: {
-      type: String,
-      default: '',
-    },
     getData: {
       type: Function,
       default() {
@@ -103,6 +107,9 @@ export default {
     onlyOnePage() {
       return false;
     },
+    hiddenIfLoading() {
+      return this.loading ? 'hidden' : 'visible';
+    },
   },
 };
 </script>
@@ -119,6 +126,12 @@ export default {
     top: 0.5rem;
     right: 15px;
   }
+
+  // @todo this code breaks layout of table with large number of entries
+  // .datatable-content {
+  //   display: table;
+  //   min-width: 100%;
+  // }
 
   .pagination {
     padding-left: 15px;
