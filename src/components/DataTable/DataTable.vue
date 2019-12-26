@@ -48,17 +48,6 @@
             </b>
           </div>
         </template>
-        <template
-          v-slot:empty="scope"
-        >
-          <div
-            class="text-left"
-          >
-            <b>
-              {{ scope.emptyFilteredText }}
-            </b>
-          </div>
-        </template>
       </b-table>
       <b-pagination
         v-if="!loading && rows >= perPage"
