@@ -3,14 +3,6 @@
     v-if="isAuthenticated"
     :class="mainNavClass"
   >
-    <b-button
-      v-b-toggle
-      class="nav-bar-collapse-button"
-      :pressed.sync="navOpened"
-    >
-      Toggle NavBar
-    </b-button>
-
     <b-nav vertical>
       <b-nav-item
         v-if="isNavItemVisible(navigationRoutesNames.RATES)"
@@ -37,6 +29,13 @@
         Accounts
       </b-nav-item>
     </b-nav>
+    <b-button
+      v-b-toggle
+      class="nav-bar-collapse-button"
+      :pressed.sync="navOpened"
+    >
+      Collapse
+    </b-button>
   </div>
 </template>
 
@@ -98,7 +97,7 @@ export default {
 
   &.collapsed {
     & > .nav {
-      width: 0;
+      width: 50px;
       overflow: hidden;
       opacity: 0;
     }
@@ -107,19 +106,37 @@ export default {
     flex-grow: 0;
 
     .nav-bar-collapse-button {
-      opacity: 0.5;
+      color: transparent;
+
+      &:after {
+        transform: rotateY(180deg)
+      }
     }
   }
 
   .nav-bar-collapse-button {
     position: absolute;
-    top: 0;
+    bottom: 0;
+    left: 0;
     z-index: 3;
-    font-size: 14px;
+    width: 100%;
     padding: 10px;
+    font-size: 14px;
     border-radius: initial;
     box-shadow: initial;
+    outline: none;
     transition: all ease-in-out 0.5s;
+
+    &:after {
+      content: '';
+      background: url('../../assets/arrow.svg') center no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 50px;
+      transition: all ease-in-out 0.5s;
+    }
   }
 
   & * {
