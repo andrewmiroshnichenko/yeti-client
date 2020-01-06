@@ -15,41 +15,30 @@
       <div class="placeholder-for-future-use">
         Search element can be placed here
       </div>
-      <b-button
-        v-b-toggle.statistics-pages-collapse
-        class="menu-collapse"
+      <b-nav-item
+        v-if="isNavItemVisible(navigationRoutesNames.RATES)"
+        :active="this.$route.path === navigationRoutesPaths.RATES"
+        router-link
+        :to="navigationRoutesPaths.RATES"
       >
-        Statistics pages
-      </b-button>
-      <b-collapse
-        id="statistics-pages-collapse"
-        v-model="statisticsVisible"
+        Rates
+      </b-nav-item>
+      <b-nav-item
+        v-if="isNavItemVisible(navigationRoutesNames.CDRS)"
+        :active="this.$route.path === navigationRoutesPaths.CDRS"
+        router-link
+        :to="navigationRoutesPaths.CDRS"
       >
-        <b-nav-item
-          v-if="isNavItemVisible(navigationRoutesNames.RATES)"
-          :active="this.$route.path === navigationRoutesPaths.RATES"
-          router-link
-          :to="navigationRoutesPaths.RATES"
-        >
-          Rates
-        </b-nav-item>
-        <b-nav-item
-          v-if="isNavItemVisible(navigationRoutesNames.CDRS)"
-          :active="this.$route.path === navigationRoutesPaths.CDRS"
-          router-link
-          :to="navigationRoutesPaths.CDRS"
-        >
-          Cdrs
-        </b-nav-item>
-        <b-nav-item
-          v-if="isNavItemVisible(navigationRoutesNames.ACCOUNTS)"
-          :active="this.$route.path === navigationRoutesPaths.ACCOUNTS"
-          router-link
-          :to="navigationRoutesPaths.ACCOUNTS"
-        >
-          Accounts
-        </b-nav-item>
-      </b-collapse>
+        Cdrs
+      </b-nav-item>
+      <b-nav-item
+        v-if="isNavItemVisible(navigationRoutesNames.ACCOUNTS)"
+        :active="this.$route.path === navigationRoutesPaths.ACCOUNTS"
+        router-link
+        :to="navigationRoutesPaths.ACCOUNTS"
+      >
+        Accounts
+      </b-nav-item>
     </b-nav>
   </div>
 </template>
@@ -103,6 +92,10 @@ export default {
     width: 230px;
     transition: all ease-in-out 0.5s 0.1s;
     opacity: 1;
+
+    .router-link-exact-active {
+      border-left: 1px solid #3c8dbc;
+    }
   }
 
   &.collapsed {
