@@ -10,7 +10,7 @@
         router-link
         :to="navigationRoutesPaths.RATES"
       >
-        Rates
+        {{ navItemNameHadler('Rates') }}
       </b-nav-item>
       <b-nav-item
         v-if="isNavItemVisible(navigationRoutesNames.CDRS)"
@@ -18,7 +18,7 @@
         router-link
         :to="navigationRoutesPaths.CDRS"
       >
-        Cdrs
+        {{ navItemNameHadler('Cdrs') }}
       </b-nav-item>
       <b-nav-item
         v-if="isNavItemVisible(navigationRoutesNames.ACCOUNTS)"
@@ -26,7 +26,7 @@
         router-link
         :to="navigationRoutesPaths.ACCOUNTS"
       >
-        Accounts
+        {{ navItemNameHadler('Accounts') }}
       </b-nav-item>
     </b-nav>
     <b-button
@@ -34,7 +34,7 @@
       class="nav-bar-collapse-button"
       :pressed.sync="navOpened"
     >
-      Collapse
+      {{ collapseButtonText }}
     </b-button>
   </div>
 </template>
@@ -67,10 +67,16 @@ export default {
     mainNavClass() {
       return `vertical-navbar-menu ${this.$data.navOpened ? 'opened' : 'collapsed'}`;
     },
+    collapseButtonText() {
+      return this.$data.navOpened ? 'Collapse' : '';
+    },
   },
   methods: {
     isNavItemVisible(name) {
       return !this.$store.getters.blockedPages.has(name);
+    },
+    navItemNameHadler(name) {
+      return this.$data.navOpened ? name : name[0];
     },
   },
 };
@@ -82,13 +88,10 @@ export default {
   flex: 1 1 230px;
   background-color: #222d32;
   position: relative;
-  transition: all ease-in-out 0.5s;
   padding-top: 40px;
 
   & > .nav {
     width: 230px;
-    transition: all ease-in-out 0.5s 0.1s;
-    opacity: 1;
 
     .router-link-exact-active {
       border-left: 1px solid #3c8dbc;
@@ -98,16 +101,13 @@ export default {
   &.collapsed {
     & > .nav {
       width: 50px;
-      overflow: hidden;
-      opacity: 0;
+      text-align: center;
     }
 
     flex-basis: 0px;
     flex-grow: 0;
 
     .nav-bar-collapse-button {
-      color: transparent;
-
       &:after {
         transform: rotateY(180deg)
       }
@@ -125,7 +125,7 @@ export default {
     border-radius: initial;
     box-shadow: initial;
     outline: none;
-    transition: all ease-in-out 0.5s;
+    height: 40px;
 
     &:after {
       content: '';
@@ -135,7 +135,6 @@ export default {
       top: 0;
       height: 100%;
       width: 50px;
-      transition: all ease-in-out 0.5s;
     }
   }
 
