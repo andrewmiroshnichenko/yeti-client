@@ -12,9 +12,6 @@
     </b-button>
 
     <b-nav vertical>
-      <div class="placeholder-for-future-use">
-        Search element can be placed here
-      </div>
       <b-nav-item
         v-if="isNavItemVisible(navigationRoutesNames.RATES)"
         :active="this.$route.path === navigationRoutesPaths.RATES"
@@ -87,6 +84,7 @@ export default {
   background-color: #222d32;
   position: relative;
   transition: all ease-in-out 0.5s;
+  padding-top: 40px;
 
   & > .nav {
     width: 230px;
@@ -128,12 +126,6 @@ export default {
     text-align: left;
   }
 
-  .placeholder-for-future-use {
-    text-align: center;
-    height: 200px;
-    padding: 70px 20px 0;
-    color: gray;
-  }
 
   .menu-collapse {
     box-shadow: initial;
