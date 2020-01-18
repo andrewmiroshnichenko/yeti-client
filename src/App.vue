@@ -14,6 +14,7 @@
 <script>
 import TopBar from './components/TopBar/TopBar';
 import NavBar from './components/NavBar/NavBar';
+import { AUTH } from './constants/stores';
 import { jsonApi } from './api';
 
 export default {
@@ -29,7 +30,7 @@ export default {
     };
   },
   beforeCreate() {
-    this.$store.dispatch('localAuth');
+    this.$store.dispatch(AUTH.ACTIONS.LOCAL_AUTH);
 
     const errorMiddleware = {
       name: 'logout-redirect',
@@ -41,7 +42,7 @@ export default {
         });
 
         if (payload[0].title === 'Authorization failed') {
-          this.$store.dispatch('logout');
+          this.$store.dispatch(AUTH.ACTIONS.LOGOUT);
           this.$router.push('/login');
         }
 

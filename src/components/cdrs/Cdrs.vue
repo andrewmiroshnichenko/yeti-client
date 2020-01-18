@@ -32,6 +32,7 @@ import { isEmpty, flow } from 'lodash';
 import utils from '../../utils';
 import DataTable from '../DataTable/DataTable';
 import QuickTableFilter from '../QuickTableFilter/QuickTableFilter';
+import { CDRS } from '../../constants/stores';
 
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 
@@ -205,7 +206,7 @@ export default {
   },
   created() {
     if (isEmpty(this.$store.getters.cdrFilter)) {
-      this.$store.dispatch('setCdrFilter', this.filterValue);
+      this.$store.dispatch(CDRS.ACTIONS.SET_CDRS_FILTER, this.filterValue);
     }
     this.getCdrs();
   },

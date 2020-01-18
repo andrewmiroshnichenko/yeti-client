@@ -21,6 +21,7 @@ import { flow } from 'lodash';
 // import RatesFilter from './RatesFilter';
 import DataTable from '../DataTable/DataTable';
 import utils from '../../utils';
+import { RATES } from '../../constants/stores';
 
 export default {
   name: 'Rates',
@@ -88,7 +89,7 @@ export default {
   },
   methods: {
     getRates(pageNumber) {
-      this.$store.dispatch('getRates', pageNumber);
+      this.$store.dispatch(RATES.ACTIONS.GET_RATES, pageNumber);
     },
   },
 };

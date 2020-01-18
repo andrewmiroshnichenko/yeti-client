@@ -19,6 +19,7 @@
 <script>
 // import AccountsFilter from './AccountsFilter';
 import DataTable from '../DataTable/DataTable';
+import { ACCOUNTS } from '../../constants/stores';
 
 export default {
   name: 'Accounts',
@@ -55,7 +56,7 @@ export default {
   },
   methods: {
     getAccounts(pageNumber) {
-      this.$store.dispatch('getAccounts', pageNumber).catch((err) => {
+      this.$store.dispatch(ACCOUNTS.ACTIONS.GET_ACCOUNTS, pageNumber).catch((err) => {
         if (err[0]) {
           this.$notify({
             type: 'error',

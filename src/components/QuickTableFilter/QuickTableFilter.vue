@@ -38,6 +38,7 @@
 import DateRangePicker from 'vue2-daterange-picker';
 
 import utils from '../../utils';
+import { CDRS } from '../../constants/stores';
 
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 
@@ -105,7 +106,7 @@ export default {
   },
   methods: {
     updateValues() {
-      this.$store.dispatch('setCdrFilter', this.filterValue);
+      this.$store.dispatch(CDRS.ACTIONS.SET_CDRS_FILTER, this.filterValue);
 
       this.$props.getData();
     },
@@ -115,7 +116,7 @@ export default {
       this.$props.onReset();
     },
     resetCdrFilter() {
-      this.$store.dispatch('setCdrFilter', this.filterValue);
+      this.$store.dispatch(CDRS.ACTIONS.SET_CDRS_FILTER, this.filterValue);
     },
     toggleIfNotLoading() {
       if (this.loading) {
