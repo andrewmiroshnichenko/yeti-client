@@ -14,7 +14,7 @@
 <script>
 import TopBar from './components/TopBar/TopBar';
 import NavBar from './components/NavBar/NavBar';
-import { AUTH } from './constants/stores';
+import { AUTH, NOTIFICATION_TYPES } from './constants';
 import { jsonApi } from './api';
 
 export default {
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       message: '',
-      type: 'error',
+      type: NOTIFICATION_TYPES.ERROR,
     };
   },
   beforeCreate() {
@@ -36,7 +36,7 @@ export default {
       name: 'logout-redirect',
       error: (payload) => {
         this.$notify({
-          type: 'error',
+          type: NOTIFICATION_TYPES.ERROR,
           title: payload[0].title,
           text: payload[0].detail,
         });

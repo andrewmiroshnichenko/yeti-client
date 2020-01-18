@@ -41,7 +41,7 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { AUTH } from '../../constants/stores';
+import { AUTH } from '../../constants';
 
 export default {
   name: 'TopBar',

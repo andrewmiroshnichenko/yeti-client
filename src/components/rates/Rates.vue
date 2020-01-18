@@ -21,7 +21,7 @@ import { flow } from 'lodash';
 // import RatesFilter from './RatesFilter';
 import DataTable from '../DataTable/DataTable';
 import utils from '../../utils';
-import { RATES } from '../../constants/stores';
+import { RATES } from '../../constants';
 
 export default {
   name: 'Rates',

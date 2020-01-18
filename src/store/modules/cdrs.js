@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import { jsonApi } from '../../api';
 import { RESOURCES } from '../../static/constants/api';
-import { CDRS } from '../../constants/stores';
+import { CDRS } from '../../constants';
 
 const state = {
   cdrs: {},

@@ -38,7 +38,7 @@
 import DateRangePicker from 'vue2-daterange-picker';
 
 import utils from '../../utils';
-import { CDRS } from '../../constants/stores';
+import { CDRS } from '../../constants';
 
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 

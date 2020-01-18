@@ -32,7 +32,7 @@ import { isEmpty, flow } from 'lodash';
 import utils from '../../utils';
 import DataTable from '../DataTable/DataTable';
 import QuickTableFilter from '../QuickTableFilter/QuickTableFilter';
-import { CDRS } from '../../constants/stores';
+import { CDRS } from '../../constants';
 
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 

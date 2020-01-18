@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import { jsonApi } from '../../api';
 import { RESOURCES } from '../../static/constants/api';
-import { AUTH } from '../../constants/stores';
+import { AUTH } from '../../constants';
 
 const state = {
   token: sessionStorage.getItem('yeti-token'),
