@@ -14,14 +14,12 @@
       </template>
       <template v-slot:quickFilter>
         <div class="quickfilter">
-          <div>
-            <b-link>Apply custom filters</b-link>, or
-            <QuickTableFilter
-              :get-data="getCdrs"
-              :on-reset="onReset"
-              :date-range="dateRange"
-            />
-          </div>
+          <b-link>Apply custom filters</b-link>, or
+          <QuickTableFilter
+            :get-data="getCdrs"
+            :on-reset="onReset"
+            :date-range="dateRange"
+          />
         </div>
       </template>
     </DataTable>
