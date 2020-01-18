@@ -17,9 +17,11 @@
 </template>
 
 <script>
+import { get } from 'lodash';
 // import AccountsFilter from './AccountsFilter';
 import DataTable from '../DataTable/DataTable';
 import { ACCOUNTS, NOTIFICATION_TYPES } from '../../constants';
+import { TABLE_HEADERS } from './constants';
 
 export default {
   name: 'Accounts',
@@ -29,17 +31,7 @@ export default {
   },
   data() {
     return {
-      fields: [
-        'type',
-        'name',
-        'balance',
-        'min-balance',
-        'max-balance',
-        'destination-rate-limit',
-        'origination-capacity',
-        'termination-capacity',
-        'total-capacity',
-      ],
+      fields: TABLE_HEADERS,
     };
   },
   computed: {
@@ -47,8 +39,7 @@ export default {
       return this.$store.getters.accounts.items;
     },
     rows() {
-      return this.$store.getters.accounts && this.$store.getters.accounts.meta
-        ? this.$store.getters.accounts.meta['total-count'] : 0;
+      return get(this.$store.getters, ['accounts', 'meta', 'total-count'], 0);
     },
   },
   created() {
