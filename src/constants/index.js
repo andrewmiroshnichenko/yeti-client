@@ -7,3 +7,5 @@ export {
 } from './stores';
 
 export { NOTIFICATION_TYPES } from './common';
+
+export { RELATIONSHIPS, RESOURCES } from './api';
